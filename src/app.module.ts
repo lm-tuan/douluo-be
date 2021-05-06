@@ -7,6 +7,8 @@ import { User } from './users/user.entity';
 import { UsersModule } from './users/users.module';
 import * as dotenv from 'dotenv';
 import { DatabaseModule } from './config/database.module';
+import { AnimalsService } from './animals/animals.service';
+import { AnimalsModule } from './animals/animals.module';
 
 
 
@@ -14,23 +16,9 @@ import { DatabaseModule } from './config/database.module';
   controllers: [AppController],
   providers: [AppService],
   imports: [
-    // TypeOrmModule.forRoot({
-    //   type: 'mysql',
-    //   host: process.env.HOST,
-    //   port: +process.env.PORT,
-    //   username: 'root',
-    //   password: "123456",
-    //   database: 'douluo',
-    //   entities: ["dist/**/*.entity{.ts,.js}"],
-    //   synchronize: true,
-    // }),
     DatabaseModule,
-    UsersModule
+    UsersModule,
+    AnimalsModule
   ],
 })
-export class AppModule {
-  constructor(){
-    dotenv.config();
-    console.log(process.env.DB_USER);
-  }
-}
+export class AppModule {}
